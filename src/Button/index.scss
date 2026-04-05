@@ -1,11 +1,11 @@
 .ButtonComponent {
-    height: 64px !important;
-    border: 2px solid $cGrey;
+    height: 40px !important;
+    border: $inputborder solid $cGrey;
+    border-radius: $radius;
     background: $cCTA;
     color: $cGrey;
-    font-size: $sFontMedium;
-    letter-spacing: 0.7px;
-    word-spacing: 3px;
+    font-size: $sFont;
+    letter-spacing: 0.3px;
     font-family: fBold;
     outline: none;
 

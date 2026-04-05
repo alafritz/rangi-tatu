@@ -22,21 +22,28 @@ module.exports = {
                 use: [
                     'style-loader',
                     'css-loader',
-                    'sass-loader'
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sassOptions: {
+                                silenceDeprecations: ['import', 'global-builtin']
+                            }
+                        }
+                    }
                 ]
             },
             {
                 test: /\.(gif|png|jpe?g|woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'assets/',
-                        publicPath: 'assets/'
-                    }
-                }]
+                type: 'asset/resource',
+                generator: {
+                    filename: 'assets/[name][ext]'
+                }
             }
         ]
+    },
+    devServer: {
+        static: './',
+        hot: true
     },
     plugins: [
         new HtmlWebpackPlugin({

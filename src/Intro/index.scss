@@ -6,11 +6,12 @@
     top: 0;
     left: 0;
     display: grid;
-    grid-template-columns: 1fr 600px 1fr;
-    grid-template-rows: 1fr 150px 64px 2fr;
+    grid-template-columns: 1fr 640px 1fr;
+    grid-template-rows: 1fr 150px auto 64px 2fr;
     grid-template-areas:
     '. title .'
     '. info .'
+    '. hexInput .'
     '. ButtonComponent .'
     '. . .';
 
@@ -28,10 +29,36 @@
         font-family: fRegular;
         text-align: center;
         align-self: center;
-        line-height: 40px;
+        line-height: 36px;
         word-spacing: .5px;
     }
 
+    .hexInput {
+        grid-area: hexInput;
+        justify-self: center;
+        text-align: left;
+        padding-bottom: 20px;
+
+        .label {
+            font-family: fBold;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 200px;
+            height: 40px;
+            border: $inputborder solid $cGrey;
+            border-radius: $radius;
+            font-size: 16px;
+            font-family: fRegular;
+            padding-left: 10px;
+            box-sizing: border-box;
+
+            &:focus {
+                outline: 3px solid #53cbed;
+            }
+        }
+    }
 
     .ButtonComponent {
         grid-area: ButtonComponent;
@@ -49,7 +76,7 @@
         width: 100%;
         height: 100%;
         grid-template-columns: 20px 1fr 20px;
-        grid-template-rows: 1fr 140px 64px 1.5fr;
+        grid-template-rows: 1fr 140px auto 64px 1.5fr;
 
         .title {
             font-size: 30px;

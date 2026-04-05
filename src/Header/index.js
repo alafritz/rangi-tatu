@@ -24,8 +24,8 @@ class HeaderComponent extends React.Component {
         return (
             <div className='HeaderComponent' style={{color: textColor, background: baseColor}}>
                 <div className='picker'>
-                    <img onClick={this.props.openPicker} src={isBaseColorDark ? picker2 : picker} />
-                    <span onClick={this.props.openPicker} style={{color: textColor}}>Picker</span>
+                    <img onClick={this.props.togglePicker} src={isBaseColorDark ? picker2 : picker} />
+                    <span onClick={this.props.togglePicker} style={{color: textColor}}>Picker</span>
                 </div>
                 <h1 className='title'>
                 Rangi Bora

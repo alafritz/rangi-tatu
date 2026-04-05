@@ -3,7 +3,6 @@ import React from 'react'
 
 //components
 import Header from '../Header'
-import PickerIntro from '../PickerIntro'
 import Loading from '../Loading'
 import Schemes from '../Schemes'
 
@@ -14,10 +13,8 @@ class ContainerComponent extends React.Component {
         return (
             <div className='ContainerComponent'>
                 <Header {...this.props} />
-                {this.props.pickerIntro ? <PickerIntro /> : null}
                 {this.props.loading ? <Loading {...this.props}/> : null}
-                {this.props.schemes ? <Schemes {...this.props}
-                /> : null}
+                {this.props.schemes ? <Schemes {...this.props} /> : null}
             </div>
         );
     }

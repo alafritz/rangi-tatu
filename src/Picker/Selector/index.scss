@@ -2,11 +2,13 @@
 .DropHex,
 .SelectorComponent {
     display: grid;
-    grid-template-rows: 20px 15px 10px 48px 20px;
-    grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: 20px 15px auto auto 10px 30px 20px;
+    grid-template-columns: 10px 1fr 10px;
     grid-template-areas:
     '. . .'
     '. title .'
+    '. subheader .'
+    '. . .'
     '. . .'
     '. wrapper .'
     '. . .';
@@ -20,6 +22,7 @@
             color: $cDarkGrey;
             margin-left: 10px;
             display: inline-block;
+            float: right;
             border-bottom: 1px solid $cDarkGrey;
             cursor: pointer;
 
@@ -43,22 +46,37 @@
         }
     }
 
+    .subheader {
+        grid-area: subheader;
+        font-family: fRegular;
+        color: $cDarkGrey;
+        font-size: $sFont;
+        margin-top: 8px;
+    }
+
     .wrapper {
         grid-area: wrapper;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+        
 
         button {
             overflow: hidden;
             background: #fefefe;
-            border: 1px solid $cGrey;
+            border: $inputborder solid $cGrey;
             font-family: fRegular;
             font-size: $sFont;
-            margin-left: -1px;
             text-align: center;
-            height: 48px;
-            outline: 1px solid $cGrey;
+            height: 40px;
+            margin-left: -1px;
             cursor: pointer;
+
+            &:nth-child(1) {
+                border-radius: $radius 0 0 $radius;
+            }
+            &:nth-child(3) {
+                border-radius: 0 $radius $radius 0;
+            }
 
             &.active {
                 background: $cGrey;
@@ -70,6 +88,7 @@
                 
                 &:nth-child(1) {
                     background: $cWhite;
+                    border-radius: 3px 0 0 3px;
                     animation: 2500ms boxBottom1 infinite;
                      @keyframes boxBottom1 {
                         0% { box-shadow: -5px 5px 0px 0px rgba(39, 119, 197, 1); } // #2777c6

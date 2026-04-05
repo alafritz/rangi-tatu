@@ -9,16 +9,23 @@ class SelectorComponent extends React.Component {
 
     render() {
         return (
-            <div className={'SelectorComponent ' + (this.props.passClass ? this.props.passClass : '') }>
+            <div className={'SelectorComponent ' + (this.props.passClass ? this.props.passClass : '')}>
                 <div className='title'>{this.props.title}
-                    <a onClick={this.props.onLinkclick}>{this.props.link}</a>
                 </div>
+                {this.props.subheader ?
+                    <div className='subheader'>{this.props.subheader}</div>
+                    : null}
                 <div className='wrapper'>
                     {this.props.options.map((option, i) => <button
+                        className={this.props.active === option.value ? 'active' : ''} key={i}
+                        onClick={this.props.click.bind(this, option.value)}>
+                        {option.label}
+                    </button>)}
+                    {/* {this.props.options.map((option, i) => <button
                         className={this.props.active === option ? 'active' : ''} key={i}
                         onClick={this.props.click.bind(this, option)}>
                         {option}
-                    </button> )}
+                    </button> )} */}
                 </div>
             </div>
         )

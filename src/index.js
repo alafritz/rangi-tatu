@@ -1,10 +1,8 @@
 // libraries
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import convert from 'color-convert'
 import contrast from 'get-contrast'
-import ReactGA from 'react-ga';
-
 // assets
 import './index.scss'
 import constants from '../constants'
@@ -17,17 +15,13 @@ import Intro from './Intro'
 import About from './About'
 import Information from './Information'
 
-ReactGA.initialize(constants.googleAnalyticsId);
-
-
 class Renderer extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             intro: true, // landing page
-            picker: true, // side menu
-            pickerIntro: true, // instructions for picker
+            picker: false, // modal closed by default
             loading: false, // appears after picker create button clicked and before Schemes
             schemes: false, // schemes page appear  or not appear
 
@@ -54,13 +48,14 @@ class Renderer extends React.Component {
               }
             ]
             */
-            schemesCombinations: [] // color combinations
+            schemesCombinations: [], // color combinations
+            sortBy: null,
+            sortDirection: 'asc'
         }
     }
 
     // lifecycle
     componentDidMount(){
-        ReactGA.ga('send', 'pageview', '/intro')
         // this.closeIntro()
         // this.createSchemes()
     }
@@ -99,11 +94,6 @@ class Renderer extends React.Component {
 
 
     generateCombinations(callback) {
-        ReactGA.event({
-            category: 'Combinations',
-            action: 'Generate'
-        });
-
         let newSchemesCombinations = []
         let baseHsl = convert.hex.hsl(this.state.baseColor.replace('#', ''))
         let hue = parseInt(this.state.hue)
@@ -155,18 +145,14 @@ class Renderer extends React.Component {
         this.setState({schemesCombinations: newSchemesCombinations}, () => {
             callback()
             setTimeout(()=>{
-                document.getElementsByClassName('Schemesnent')[0].scrollTo(0, 0)
+                document.getElementsByClassName('SchemesComponent')[0].scrollTo(0, 0)
             }, 300)
         })
     } //
 
     // actions
-    closePicker() {
-        this.setState({picker: false})
-    }
-
-    openPicker() {
-        this.setState({picker: true})
+    togglePicker() {
+        this.setState(prev => ({picker: !prev.picker}))
     }
 
     openAbout() {
@@ -179,10 +165,22 @@ class Renderer extends React.Component {
 
     closeIntro() {
         this.setState({intro: false})
-        ReactGA.event({
-            category: 'General',
-            action: 'Close Intro'
-        });
+    }
+
+    createSchemesFromIntro() {
+        this.setState({
+            intro: false,
+            picker: false,
+            loading: true,
+            baseColor: this.state.hexCode,
+            sortBy: null,
+            sortDirection: 'asc'
+        })
+        setTimeout(() => {
+            this.generateCombinations(() =>
+                this.setState({ loading: false, schemes: true })
+            )
+        }, 500)
     }
 
     openInformation(whichPage) {
@@ -209,13 +207,24 @@ class Renderer extends React.Component {
         this.setState({shade: val})
     }
 
+    changeSort(property) {
+        if (this.state.sortBy !== property) {
+            this.setState({ sortBy: property, sortDirection: 'asc' })
+        } else if (this.state.sortDirection === 'asc') {
+            this.setState({ sortDirection: 'desc' })
+        } else {
+            this.setState({ sortBy: null, sortDirection: 'asc' })
+        }
+    }
+
     createSchemes() {
 
         this.setState({
-            pickerIntro: false,
             picker: false,
             loading: true,
-            baseColor: this.state.hexCode
+            baseColor: this.state.hexCode,
+            sortBy: null,
+            sortDirection: 'asc'
         })
 
         // callback func created to wait for schemes to be generated before loading page clears
@@ -238,19 +247,23 @@ class Renderer extends React.Component {
         return (
             <div>
                 <Container {...this.state}
-                    openPicker={this.openPicker.bind(this)}
-                    openAbout={this.openAbout.bind(this)}/>
-
-                <Picker {...this.state}
-                    closePicker={this.closePicker.bind(this)}
-                    changeStandard={this.changeStandard.bind(this)}
-                    changeHue={this.changeHue.bind(this)}
-                    changeSaturation={this.changeSaturation.bind(this)}
-                    changeShade={this.changeShade.bind(this)}
-                    createSchemes={this.createSchemes.bind(this)}
-                    baseColorChange={this.baseColorChange.bind(this)}
-                    openInformation={this.openInformation.bind(this)}
+                    togglePicker={this.togglePicker.bind(this)}
+                    openAbout={this.openAbout.bind(this)}
+                    changeSort={this.changeSort.bind(this)}
                 />
+
+                {this.state.picker ?
+                    <Picker {...this.state}
+                        togglePicker={this.togglePicker.bind(this)}
+                        changeStandard={this.changeStandard.bind(this)}
+                        changeHue={this.changeHue.bind(this)}
+                        changeSaturation={this.changeSaturation.bind(this)}
+                        changeShade={this.changeShade.bind(this)}
+                        createSchemes={this.createSchemes.bind(this)}
+                        baseColorChange={this.baseColorChange.bind(this)}
+                        openInformation={this.openInformation.bind(this)}
+                    />
+                    : null}
 
                 {this.state.information ?
                     <Information {...this.state}
@@ -263,7 +276,9 @@ class Renderer extends React.Component {
 
                 {this.state.intro ?
                     <Intro
-                        closeIntro={this.closeIntro.bind(this)}/>
+                        hexCode={this.state.hexCode}
+                        baseColorChange={this.baseColorChange.bind(this)}
+                        createSchemesFromIntro={this.createSchemesFromIntro.bind(this)}/>
                     : null}
 
                 { this.state.about ?
@@ -277,4 +292,5 @@ class Renderer extends React.Component {
     }
 }
 
-ReactDOM.render(<Renderer />, document.getElementById('app'));
+const root = createRoot(document.getElementById('app'));
+root.render(<Renderer />);

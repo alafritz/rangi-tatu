@@ -1,6 +1,7 @@
 .LoadingComponent {
     background: $cOffWhite;
-    height: calc(100vh - 100px);
+    flex: 1;
+    min-height: 0;
     width: 100vw;
     display: grid;
     grid-template-columns: 1fr 640 1fr;

@@ -9,10 +9,13 @@ $cCTA: #f9f9f9;
 $sFont: 16px;
 $sFontMedium: 20px;
 $sFontbig: 24px;
+$radius: 4px;
+$inputborder: 1px;
 
-$phone: (max-width: 530px), (-webkit-min-device-pixel-ratio: 2) and (max-width: 530px);
 
-$tablet: (min-width: 531px), (-webkit-min-device-pixel-ratio: 2) and (min-width: 531px);
+$phone: "(max-width: 530px), (-webkit-min-device-pixel-ratio: 2) and (max-width: 530px)";
+
+$tablet: "(min-width: 531px), (-webkit-min-device-pixel-ratio: 2) and (min-width: 531px)";
 
 // fonts
 @font-face {
@@ -36,7 +39,6 @@ $tablet: (min-width: 531px), (-webkit-min-device-pixel-ratio: 2) and (min-width:
 //components
 @import './Intro/index.scss';
 @import './Container/index.scss';
-@import './PickerIntro/index.scss';
 @import './Picker/index.scss';
 @import './Picker/Selector/index.scss';
 @import './Information/index.scss';

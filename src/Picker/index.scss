@@ -1,100 +1,103 @@
 .PickerComponent {
     position: fixed;
-    left: -628px;
     top: 0;
-    width: 320px;
+    left: 0;
+    width: 100vw;
     height: 100vh;
-    background: $cWhite;
-    transition: left 300ms ease-out;
-    box-shadow: 4px 0 8px 0 rgba(0, 0, 0, .30);
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
 
-    &.open {
-        left: 0;
+    .modal {
+        background: $cWhite;
+        width: 90%;
+        max-width: 440px;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
     }
 
-    .header {
-        position: absolute;
-        display: grid;
-        width: 100%;
-        border-bottom: 1px solid $cLightGrey;
-        z-index: 1;
-        grid-template-columns: 20px 40px 1fr 1fr 20px;
-        grid-template-rows: 50px 20px;
-        grid-template-areas:
-        '. img title close .'
-        '. . . . .';
-        align-items: end;
-
-        img {
-            grid-area: img;
-            width: 20px;
-            height: 20px;
-            margin: 0 auto;
-            padding-bottom: 4px;
-        }
-
+    .DropHex {
         .title {
-            grid-area: title;
-            font-size: 24px;
             font-family: fBold;
+            margin-bottom: 8px;
         }
 
-        .close {
-            grid-area: close;
-            font-family: fBold;
-            justify-self: right;
-            border-bottom: 2px solid $cGrey;
-            margin-bottom: 7px;
-            cursor: pointer;
-        }
-
-    }// header
-
-    .selectorWrapper {
-        background: $cWhite;
-        position: absolute;
-        top: 80px;
-        width: 100%;
-        overflow-y: auto;
-        overflow-x: hidden;
-        max-height: calc(100vh - 70px);
-
-        &::-webkit-scrollbar {
-            display: none;
-        }
-
-        .DropHex {
-            padding-top: 15px;
-        }
-        .standard {
-            margin-top: 20px;
-        }
-
-        .DropHex .wrapper {
-            height: 42px;
-            width: calc(50% - 12px);
-            border-radius: 0px;
-            border: 2px solid $cGrey;
-            font-size: 18px;
+        .wrapper {
+            width: 100%;
+            height: 40px;
+            border-radius: $radius;
+            border: $inputborder solid $cGrey;
+            font-size: $sFont;
             font-family: fRegular;
-            padding-left: 12px;
+            padding-left: 10px;
+            box-sizing: border-box;
+            
 
-            &:focus:not(.active) {
-                outline: 5px solid #53cbed;
-                z-index: 1;
+            &:focus {
+                outline: 3px solid #53cbed;
+            }
+        }
+    }
+
+    .advancedToggle {
+        margin: 0 10px;
+        padding: 10px 0;
+        font-family: fRegular;
+        font-size: $sFont;
+        color: $cDarkGrey;
+        cursor: pointer;
+        user-select: none;
+        display: inline-block;
+        border-bottom: 1px solid $cDarkGrey;
+
+        &:hover {
+            animation: 2500ms advancedBorderBottom infinite;
+
+            @keyframes advancedBorderBottom {
+                0% { border-bottom: 1px solid rgba(39, 119, 197, 1); }
+                20% { border-bottom: 1px solid rgba(34, 184, 200, 1); }
+                30% { border-bottom: 1px solid rgba(34, 213, 185, 1); }
+                40% { border-bottom: 1px solid rgba(71, 213, 48, 1); }
+                50% { border-bottom: 1px solid rgba(206, 200, 33, 1); }
+                60% { border-bottom: 1px solid rgba(211, 133, 31, 1); }
+                70% { border-bottom: 1px solid rgba(213, 53, 31, 1); }
+                80% { border-bottom: 1px solid rgba(199, 33, 212, 1); }
+                100% { border-bottom: 1px solid rgba(132, 71, 213, 1); }
             }
         }
 
-        .button {
-            justify-self: center;
-            margin-top: 10px;
-            padding-bottom: 40px;
+        .chevron {
+            display: inline-block;
+            margin-right: 6px;
+            transition: transform 200ms ease;
+
+            &.open {
+                transform: rotate(180deg);
+            }
         }
+    }
 
-    } // selectorWrapper
+    .advancedOptions {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 300ms ease-out;
 
-    @media #{$phone} {
-        width: 100%;
+        &.open {
+            max-height: 400px;
+            margin-top: 10px;
+        }
+    }
+
+    .button {
+        margin-top: 24px;
+        text-align: center;
+
+        .ButtonComponent {
+            width: 100%;
+        }
     }
 
 }// PickerComponent
