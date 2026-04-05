@@ -71,10 +71,10 @@
             margin-left: -1px;
             cursor: pointer;
 
-            &:nth-child(1) {
+            &:first-child {
                 border-radius: $radius 0 0 $radius;
             }
-            &:nth-child(3) {
+            &:last-child {
                 border-radius: 0 $radius $radius 0;
             }
 
@@ -86,9 +86,8 @@
 
             &:hover:not(.active) {
                 
-                &:nth-child(1) {
+                &:first-child {
                     background: $cWhite;
-                    border-radius: 3px 0 0 3px;
                     animation: 2500ms boxBottom1 infinite;
                      @keyframes boxBottom1 {
                         0% { box-shadow: -5px 5px 0px 0px rgba(39, 119, 197, 1); } // #2777c6
@@ -102,7 +101,7 @@
                         100% { box-shadow: -5px 5px 0px 0px rgba(132, 71, 213, 1);} //#8447d5
                     }
                 }
-                &:nth-child(2) {
+                &:not(:first-child):not(:last-child) {
                     background: $cWhite;
                     animation: 2500ms boxBottom2 infinite;
                      @keyframes boxBottom2 {
@@ -117,7 +116,7 @@
                         100% { box-shadow: 0px 5px 0px 0px rgba(132, 71, 213, 1);} //#8447d5
                     }
                 }
-                &:nth-child(3) {
+                &:last-child {
                     background: $cWhite;
                     animation: 2500ms boxBottom3 infinite;
                      @keyframes boxBottom3 {

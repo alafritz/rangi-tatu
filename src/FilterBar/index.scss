@@ -1,0 +1,60 @@
+.FilterBarComponent {
+    padding: 15px 50px 10px;
+
+    .filterHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 4px;
+
+        .filterTitle {
+            font-family: fBold;
+            font-size: $sFontMedium;
+        }
+
+        .filterCount {
+            font-family: fRegular;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    }
+
+    .filterSelectors {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 20px;
+
+        .filterSelector {
+            flex: 1;
+            min-width: 160px;
+        }
+    }
+
+    .resetLink {
+        font-family: fRegular;
+        cursor: pointer;
+        border-bottom: 1px solid;
+        margin-left: 4px;
+
+        &:hover {
+            animation: 2500ms filterResetBorder infinite;
+
+            @keyframes filterResetBorder {
+                0% { border-bottom-color: rgba(39, 119, 197, 1); }
+                20% { border-bottom-color: rgba(34, 184, 200, 1); }
+                30% { border-bottom-color: rgba(34, 213, 185, 1); }
+                40% { border-bottom-color: rgba(71, 213, 48, 1); }
+                50% { border-bottom-color: rgba(206, 200, 33, 1); }
+                60% { border-bottom-color: rgba(211, 133, 31, 1); }
+                70% { border-bottom-color: rgba(213, 53, 31, 1); }
+                80% { border-bottom-color: rgba(199, 33, 212, 1); }
+                100% { border-bottom-color: rgba(132, 71, 213, 1); }
+            }
+        }
+    }
+
+    @media #{$phone} {
+        padding: 15px 10px 10px;
+    }
+
+}// FilterBarComponent

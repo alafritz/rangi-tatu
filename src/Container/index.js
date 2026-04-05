@@ -3,6 +3,7 @@ import React from 'react'
 
 //components
 import Header from '../Header'
+import FilterBar from '../FilterBar'
 import Loading from '../Loading'
 import Schemes from '../Schemes'
 
@@ -13,6 +14,9 @@ class ContainerComponent extends React.Component {
         return (
             <div className='ContainerComponent'>
                 <Header {...this.props} />
+                {this.props.schemes ?
+                    <FilterBar {...this.props} />
+                    : null}
                 {this.props.loading ? <Loading {...this.props}/> : null}
                 {this.props.schemes ? <Schemes {...this.props} /> : null}
             </div>

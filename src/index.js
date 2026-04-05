@@ -49,8 +49,9 @@ class Renderer extends React.Component {
             ]
             */
             schemesCombinations: [], // color combinations
-            sortBy: null,
-            sortDirection: 'asc'
+            filterHue: null,
+            filterSaturation: null,
+            filterLightness: null
         }
     }
 
@@ -173,8 +174,9 @@ class Renderer extends React.Component {
             picker: false,
             loading: true,
             baseColor: this.state.hexCode,
-            sortBy: null,
-            sortDirection: 'asc'
+            filterHue: null,
+            filterSaturation: null,
+            filterLightness: null
         })
         setTimeout(() => {
             this.generateCombinations(() =>
@@ -207,14 +209,17 @@ class Renderer extends React.Component {
         this.setState({shade: val})
     }
 
-    changeSort(property) {
-        if (this.state.sortBy !== property) {
-            this.setState({ sortBy: property, sortDirection: 'asc' })
-        } else if (this.state.sortDirection === 'asc') {
-            this.setState({ sortDirection: 'desc' })
-        } else {
-            this.setState({ sortBy: null, sortDirection: 'asc' })
-        }
+    changeFilter(property, value) {
+        const key = 'filter' + property
+        this.setState({ [key]: this.state[key] === value ? null : value })
+    }
+
+    resetFilters() {
+        this.setState({
+            filterHue: null,
+            filterSaturation: null,
+            filterLightness: null
+        })
     }
 
     createSchemes() {
@@ -223,8 +228,9 @@ class Renderer extends React.Component {
             picker: false,
             loading: true,
             baseColor: this.state.hexCode,
-            sortBy: null,
-            sortDirection: 'asc'
+            filterHue: null,
+            filterSaturation: null,
+            filterLightness: null
         })
 
         // callback func created to wait for schemes to be generated before loading page clears
@@ -249,7 +255,8 @@ class Renderer extends React.Component {
                 <Container {...this.state}
                     togglePicker={this.togglePicker.bind(this)}
                     openAbout={this.openAbout.bind(this)}
-                    changeSort={this.changeSort.bind(this)}
+                    changeFilter={this.changeFilter.bind(this)}
+                    resetFilters={this.resetFilters.bind(this)}
                 />
 
                 {this.state.picker ?
