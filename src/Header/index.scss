@@ -1,72 +1,60 @@
 .HeaderComponent {
-    height: 100px;
+    height: 64px;
     width: 100%;
     background: $cWhite;
     font-family: fBold;
     display: grid;
-    grid-template-columns: 400px 1fr 400px;
-    grid-template-areas: 'picker title q';
+    grid-template-columns: 40px 1fr 40px;
+    
+    .header-content {
+        grid-column: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .title {
+        font-size: 24px;
+    }
+    
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
-    .picker {
-        grid-area: picker;
-        align-self: center;
-        margin-left: 50px;
-
+    .headerButton {
+        background: transparent;
+        border-color: currentColor;
+        color: inherit;
+        padding: 0 12px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
 
         img {
-            padding-right: 10px;
-            cursor: pointer;
+            height: 16px;
+            width: 16px;
+            vertical-align: middle;
         }
 
         span {
-            position: absolute;
-            border-bottom: 2px solid;
-            cursor: pointer;
-        }
-    }
-
-    .title {
-        grid-area: title;
-        font-size: 32px;
-        align-self: center;
-        justify-self: center;
-    }
-
-    .q {
-        grid-area: q;
-        align-self: center;
-
-        img {
-            margin-left: -16px;
-            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
     }
 
     @media #{$tablet} {
-        grid-template-columns: 100px 1fr 100px;
-
-        .q {
-            margin-left: 44px;
-        }
+        grid-template-columns: 40px 1fr 40px;
     }
 
     @media #{$phone} {
-        grid-template-columns: 100px 1fr 100px;
-
-        .picker {
-            margin-left: 20px;
-
-            span {
-                display: none;
-            }
-        }
+        grid-template-columns: 10px 1fr 10px;
 
         .title {
             font-size: 22px;
         }
-
-        .q {
-            margin-left: 78px;
-        }
     }
+
 } // HeaderComponent

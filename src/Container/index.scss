@@ -4,4 +4,14 @@
     flex-direction: column;
     background-color: $cOffWhite;
     overflow: hidden;
+
+    .filterBarSlider {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 300ms ease-out;
+
+        &.open {
+            max-height: 200px;
+        }
+    }
 }

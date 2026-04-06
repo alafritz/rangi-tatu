@@ -4,6 +4,9 @@ import React from 'react'
 //helpers
 import helpers from '../app/helpers'
 
+//components
+import Button from '../Button'
+
 //assets
 import picker from '../app/img/picker.svg'
 import picker2 from '../app/img/picker2.svg'
@@ -21,18 +24,30 @@ class HeaderComponent extends React.Component {
 
         let textColor = isBaseColorDark ? '#ffffff' : '#333333'
 
+        let pickerIcon = isBaseColorDark ? picker2 : picker
+        let questionIcon = isBaseColorDark ? question2 : question
+
         return (
             <div className='HeaderComponent' style={{color: textColor, background: baseColor}}>
-                <div className='picker'>
-                    <img onClick={this.props.togglePicker} src={isBaseColorDark ? picker2 : picker} />
-                    <span onClick={this.props.togglePicker} style={{color: textColor}}>Picker</span>
+                <div className='header-content'>
+                    <h1 className='title'>
+                        Rangi Bora
+                    </h1>
+                    <div className='header-right'>
+                        <Button
+                            click={this.props.togglePicker}
+                            passClass='headerButton'
+                            title={<span><img src={pickerIcon} /> Edit color</span>}/>
+                        <Button
+                            click={this.props.toggleFilters}
+                            passClass='headerButton'
+                            title='Filters'/>
+                        <Button
+                            click={this.props.openAbout}
+                            passClass='headerButton'
+                            title={<img src={questionIcon} />}/>
+                    </div>
                 </div>
-                <h1 className='title'>
-                Rangi Bora
-                </h1>
-                <a className='q'>
-                    <img onClick={this.props.openAbout} src={isBaseColorDark ? question2 : question}/>
-                </a>
             </div>
         )
     }

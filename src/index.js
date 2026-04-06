@@ -49,6 +49,7 @@ class Renderer extends React.Component {
             ]
             */
             schemesCombinations: [], // color combinations
+            showFilters: false,
             filterHue: null,
             filterSaturation: null,
             filterLightness: null
@@ -156,6 +157,10 @@ class Renderer extends React.Component {
         this.setState(prev => ({picker: !prev.picker}))
     }
 
+    toggleFilters() {
+        this.setState(prev => ({showFilters: !prev.showFilters}))
+    }
+
     openAbout() {
         this.setState({about: true})
     }
@@ -174,6 +179,7 @@ class Renderer extends React.Component {
             picker: false,
             loading: true,
             baseColor: this.state.hexCode,
+            showFilters: false,
             filterHue: null,
             filterSaturation: null,
             filterLightness: null
@@ -228,6 +234,7 @@ class Renderer extends React.Component {
             picker: false,
             loading: true,
             baseColor: this.state.hexCode,
+            showFilters: false,
             filterHue: null,
             filterSaturation: null,
             filterLightness: null
@@ -254,6 +261,7 @@ class Renderer extends React.Component {
             <div>
                 <Container {...this.state}
                     togglePicker={this.togglePicker.bind(this)}
+                    toggleFilters={this.toggleFilters.bind(this)}
                     openAbout={this.openAbout.bind(this)}
                     changeFilter={this.changeFilter.bind(this)}
                     resetFilters={this.resetFilters.bind(this)}

@@ -1,60 +1,58 @@
 .FilterBarComponent {
-    padding: 15px 50px 10px;
+    padding: 0 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    .filterHeader {
+    .filterRow {
         display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 4px;
-
-        .filterTitle {
-            font-family: fBold;
-            font-size: $sFontMedium;
-        }
-
-        .filterCount {
-            font-family: fRegular;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-    }
-
-    .filterSelectors {
-        display: flex;
+        align-items: center;
         flex-wrap: wrap;
+        justify-content: center;
         gap: 0 20px;
-
-        .filterSelector {
-            flex: 1;
-            min-width: 160px;
-        }
     }
 
-    .resetLink {
-        font-family: fRegular;
-        cursor: pointer;
-        border-bottom: 1px solid;
-        margin-left: 4px;
+    .filterTitle {
+        font-family: fBold;
+        font-size: $sFont;
+        white-space: nowrap;
+        margin-right: 4px;
+    }
 
-        &:hover {
-            animation: 2500ms filterResetBorder infinite;
+    .filterSelector {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
 
-            @keyframes filterResetBorder {
-                0% { border-bottom-color: rgba(39, 119, 197, 1); }
-                20% { border-bottom-color: rgba(34, 184, 200, 1); }
-                30% { border-bottom-color: rgba(34, 213, 185, 1); }
-                40% { border-bottom-color: rgba(71, 213, 48, 1); }
-                50% { border-bottom-color: rgba(206, 200, 33, 1); }
-                60% { border-bottom-color: rgba(211, 133, 31, 1); }
-                70% { border-bottom-color: rgba(213, 53, 31, 1); }
-                80% { border-bottom-color: rgba(199, 33, 212, 1); }
-                100% { border-bottom-color: rgba(132, 71, 213, 1); }
+        .title {
+            grid-area: unset;
+            white-space: nowrap;
+            margin: 0;
+        }
+
+        .wrapper {
+            grid-area: unset;
+            display: flex;
+
+            button {
+                width: 88px;
+                padding: 0 12px;
             }
         }
     }
 
+    .filterCount {
+        font-family: fRegular;
+        font-size: 14px;
+        opacity: 0.8;
+        white-space: nowrap;
+        margin-top: 15px;
+    }
+
+
     @media #{$phone} {
-        padding: 15px 10px 10px;
+        padding: 10px 10px;
     }
 
 }// FilterBarComponent

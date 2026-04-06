@@ -15,7 +15,9 @@ class ContainerComponent extends React.Component {
             <div className='ContainerComponent'>
                 <Header {...this.props} />
                 {this.props.schemes ?
-                    <FilterBar {...this.props} />
+                    <div className={'filterBarSlider' + (this.props.showFilters ? ' open' : '')}>
+                        <FilterBar {...this.props} />
+                    </div>
                     : null}
                 {this.props.loading ? <Loading {...this.props}/> : null}
                 {this.props.schemes ? <Schemes {...this.props} /> : null}
