@@ -2,7 +2,7 @@ import React from 'react'
 
 //components
 import Button from '../Button'
-import Selector from '../Picker/Selector'
+import Selector from '../Selector'
 
 //assets
 import constants from '../../constants'

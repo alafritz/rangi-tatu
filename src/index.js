@@ -11,7 +11,7 @@ import helpers from './app/helpers'
 
 //nenets
 import Container from './Container'
-import Picker from './Picker'
+import SettingsModal from './SettingsModal'
 import Intro from './Intro'
 import About from './About'
 import Information from './Information'
@@ -282,7 +282,7 @@ class Renderer extends React.Component {
                 />
 
                 {this.state.picker ?
-                    <Picker {...this.state}
+                    <SettingsModal {...this.state}
                         togglePicker={this.togglePicker.bind(this)}
                         changeStandard={this.changeStandard.bind(this)}
                         changeHue={this.changeHue.bind(this)}

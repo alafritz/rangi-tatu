@@ -1,0 +1,62 @@
+.SelectorComponent {
+    // padding: 15px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .label {
+        font-family: txtBold;
+    }
+
+    .subheader {
+        font-family: txtMed;
+        color: $cDarkGrey;
+        font-size: $sFont;
+    }
+
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+        gap: 3px;
+        
+
+        button {
+            overflow: hidden;
+            background-color: $cActionLight;
+            border: 0;
+            font-family: fRegular;
+            font-size: $sFont;
+            text-align: center;
+            height: 40px;
+            cursor: pointer;
+
+            &:first-child {
+                border-radius: 20px $radius $radius 20px;
+                padding-left: 10px;
+            }
+            &:not(:first-child):not(:last-child) {
+                    border-radius: $radius;
+            }
+            &:last-child {
+                border-radius: $radius 20px 20px $radius;
+                padding-right: 10px;
+            }
+
+            &.active {
+                background: $cPressLight;
+                color: $cWhite;
+            }
+
+            &:hover:not(.active) {
+                background: $cHoverLight;
+            }
+
+            &:focus:not(.active) {
+                outline:  5px solid #53cbed;
+                z-index: 1;
+            }
+        }
+
+    } //wrapper
+
+}// SelectorComponent

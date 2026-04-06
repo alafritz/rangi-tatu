@@ -1,7 +1,7 @@
 import React from 'react'
 import convert from 'color-convert'
 
-import Selector from '../Picker/Selector'
+import Selector from '../Selector'
 import filterSchemes from '../app/filterSchemes'
 
 class FilterBarComponent extends React.Component {

@@ -1,14 +1,19 @@
 //libraries
 import React from 'react'
 
+//assets
+import closeIcon from '../app/img/close.svg'
+
 class AboutComponent extends React.Component {
 
     render() {
         return (
             <div className='AboutComponent' onClick={this.props.closeAbout}>
                 <div className='modal' onClick={e => e.stopPropagation()}>
-                    <div className='closeButton' onClick={this.props.closeAbout}>&times;</div>
-                    <div className='title'>what&apos;s this?</div>
+                    <div className='modal-title'>
+                        About Rangi Bora
+                        <img className='close-icon' src={closeIcon} onClick={this.props.closeAbout} />
+                    </div>
                     <div className='info'>
                         There were no sites that could generate schemes of WCAG2 AA compliant colors. So I decided to do something about that, and the rest, they say, is history.
                     </div>

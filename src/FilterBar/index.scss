@@ -27,13 +27,11 @@
 
         .title {
             font-family: txtMed;
-            grid-area: unset;
             white-space: nowrap;
             margin: 0;
         }
 
         .wrapper {
-            grid-area: unset;
             display: flex;
             gap: 3px;
 

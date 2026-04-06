@@ -3,17 +3,13 @@ import React from 'react'
 
 // components
 import Button from '../Button'
-import Selector from './Selector'
+import Selector from '../Selector'
 
 // assets
 import constants from '../../constants'
 
-class PickerComponent extends React.Component {
+class SettingsModalComponent extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = { advancedOpen: false }
-    }
 
     keypress(e){
         if(e.key == 'Enter'){
@@ -21,32 +17,18 @@ class PickerComponent extends React.Component {
         }
     }
 
-    toggleAdvanced() {
-        this.setState(prev => ({ advancedOpen: !prev.advancedOpen }))
-    }
 
     render() {
 
         return (
-            <div className='PickerComponent' onClick={this.props.togglePicker}>
+            <div className='SettingsModalComponent' onClick={this.props.togglePicker}>
 
                 <div className='modal' onClick={e => e.stopPropagation()}>
 
-                    <div className='DropHex'>
-                        <div className='title'>Base color (hex code)</div>
-                        <input className={'wrapper' + (this.props.hexError ? ' error' : '')} type='text' placeholder='#FFFFFF' maxLength='7'
-                            value={this.props.hexCode}
-                            onKeyPress={this.keypress.bind(this)}
-                            onChange={this.props.baseColorChange.bind(this)}/>
-                    </div>
-                    {this.props.hexError && <div className='error-message'>Please enter a valid hex code</div>}
-
-                    <div className='advancedToggle' onClick={this.toggleAdvanced.bind(this)}>
-                        <span className={'chevron' + (this.state.advancedOpen ? ' open' : '')}>&#9662;</span>
-                        Advanced Options
+                    <div className='modal-title'>
+                        Color settings
                     </div>
 
-                    <div className={'advancedOptions' + (this.state.advancedOpen ? ' open' : '')}>
                         <Selector
                             passClass='hue'
                             title='Hue Step'
@@ -70,13 +52,17 @@ class PickerComponent extends React.Component {
                             options={constants.SelectorOptions.shadeOptions}
                             active={this.props.shade}
                             click={this.props.changeShade}/>
-                    </div>
 
-                    <div className='button'>
+
+                    <div className='button-row'>
+                        <Button
+                            click={this.props.togglePicker}
+                            passClass='cancelButton'
+                            title='Cancel'/>
                         <Button
                             click={this.props.createSchemes}
-                            passClass='title'
-                            title='Create'/>
+                            passClass='createButton'
+                            title='Apply'/>
                     </div>
 
                 </div>
@@ -86,4 +72,4 @@ class PickerComponent extends React.Component {
     }
 }
 
-export default PickerComponent
+export default SettingsModalComponent
