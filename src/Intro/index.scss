@@ -6,14 +6,14 @@
     top: 0;
     left: 0;
     display: grid;
-    grid-template-columns: 1fr 480px 1fr;
-    grid-template-rows: 1fr auto auto auto 2fr;
+    grid-template-columns: 1fr 560px 1fr;
+    grid-template-rows: 1fr auto auto auto auto 2fr;
     row-gap: 30px;
     grid-template-areas:
     '. title .'
+    '. subheader .'
     '. info .'
-    '. hexInput .'
-    '. ButtonComponent .'
+    '. HexInputComponent .'
     '. . .';
 
     .title {
@@ -25,6 +25,15 @@
         line-height: 48px;
     }
 
+    .subheader {
+        grid-area: subheader;
+        font-size: $sFont;
+        font-family: txtBold;
+        text-align: left;
+        align-self: center;
+        line-height: 24px;
+    }
+
     .info {
         grid-area: info;
         font-size: $sFont;
@@ -34,49 +43,18 @@
         line-height: 24px;
     }
 
-    .hexInput {
-        grid-area: hexInput;
+    .HexInputComponent {
+        grid-area: HexInputComponent;
         justify-self: left;
         text-align: left;
 
-        .label {
-            font-family: txtBold;
-            margin-bottom: 10px;
+        .ButtonComponent {
+            background: $cPrimary;
+            color: $cWhite;
+            border-color: $cPrimary;
+            white-space: nowrap;
+            padding: 0 10px;
         }
-
-        input {
-            width: 160px;
-            height: 40px;
-            border: $inputborder solid $cGrey;
-            border-radius: $radius;
-            font-size: $sFont;
-            font-family: txtMed;
-            padding-left: 10px;
-            box-sizing: border-box;
-
-            &:focus {
-                outline: 3px solid #53cbed;
-            }
-
-            &.error {
-                border-color: #d32f2f;
-                &:focus { outline-color: #d32f2f; }
-            }
-        }
-
-        .error-message {
-            color: #d32f2f;
-            font-size: $sFont;
-            font-family: txtMed;
-            margin-top: 10px;
-        }
-    }
-
-    .ButtonComponent {
-        grid-area: ButtonComponent;
-        width: 100%;
-        align-self: end;
-        justify-self: center;
     }
 
     @media #{$tablet} {
@@ -88,20 +66,24 @@
         width: 100%;
         height: 100%;
         grid-template-columns: 20px 1fr 20px;
-        grid-template-rows: 1fr 140px auto auto 1fr;
+        grid-template-rows: 1fr auto auto auto auto 2fr;
         row-gap: 30px;
 
-        .hexInput {
+        .HexInputComponent {
             width: 100%;
+
+            .input-row {
+                flex-wrap: wrap;
+            }
 
             input {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .ButtonComponent {
                 width: 100%;
             }
-    }
-
-        .ButtonComponent {
-            width: 100%;
-            align-self: center;
         }
     }
 

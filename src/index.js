@@ -277,6 +277,8 @@ class Renderer extends React.Component {
                     openAbout={this.openAbout.bind(this)}
                     changeFilter={this.changeFilter.bind(this)}
                     resetFilters={this.resetFilters.bind(this)}
+                    baseColorChange={this.baseColorChange.bind(this)}
+                    createSchemes={this.createSchemes.bind(this)}
                 />
 
                 {this.state.picker ?

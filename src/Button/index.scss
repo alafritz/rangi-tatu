@@ -1,33 +1,33 @@
 .ButtonComponent {
     height: 40px !important;
-    border: $inputborder solid $cGrey;
+    border: 0;
     border-radius: $radius;
-    background: $cCTA;
-    color: $cGrey;
+    background: $cActionLight;
     font-size: $sFont;
     letter-spacing: 0.3px;
-    font-family: fBold;
+    font-family: fRegular;
     outline: none;
 
     &:hover {
         cursor: pointer;
-        animation: 2500ms boxShadow infinite;
+        background: $cHoverLight;
+        // animation: 2500ms boxShadow infinite;
         
-        @keyframes boxShadow {
-            0% { box-shadow: 5px 5px 0px 0px rgba(39, 119, 197, 1); } // #2777c6
-            20% { box-shadow: 5px 5px 0px 0px rgba(34, 184, 200, 1); } // #22b8c8
-            30% { box-shadow: 5px 5px 0px 0px rgba(34, 213, 185, 1); } //#22d5b9
-            40% { box-shadow: 5px 5px 0px 0px rgba(71, 213, 48, 1); } //#47d530
-            50% { box-shadow: 5px 5px 0px 0px rgba(206, 200, 33, 1); } //#cec821
-            60% { box-shadow: 5px 5px 0px 0px rgba(211, 133, 31, 1); } // #d3851f
-            70% { box-shadow: 5px 5px 0px 0px rgba(213, 53, 31, 1); } //#d5351f
-            80% { box-shadow: 5px 5px 0px 0px rgba(199, 33, 212, 1); } //#c721d4
-            100% { box-shadow: 5px 5px 0px 0px rgba(132, 71, 213, 1);} //#8447d5
-        }
+        // @keyframes boxShadow {
+        //     0% { box-shadow: 5px 5px 0px 0px rgba(39, 119, 197, 1); } // #2777c6
+        //     20% { box-shadow: 5px 5px 0px 0px rgba(34, 184, 200, 1); } // #22b8c8
+        //     30% { box-shadow: 5px 5px 0px 0px rgba(34, 213, 185, 1); } //#22d5b9
+        //     40% { box-shadow: 5px 5px 0px 0px rgba(71, 213, 48, 1); } //#47d530
+        //     50% { box-shadow: 5px 5px 0px 0px rgba(206, 200, 33, 1); } //#cec821
+        //     60% { box-shadow: 5px 5px 0px 0px rgba(211, 133, 31, 1); } // #d3851f
+        //     70% { box-shadow: 5px 5px 0px 0px rgba(213, 53, 31, 1); } //#d5351f
+        //     80% { box-shadow: 5px 5px 0px 0px rgba(199, 33, 212, 1); } //#c721d4
+        //     100% { box-shadow: 5px 5px 0px 0px rgba(132, 71, 213, 1);} //#8447d5
+        // }
     }
 
     &:active{
-        background: $cCTA;
+        background: $cPressLight;
     }
 
     &:focus {

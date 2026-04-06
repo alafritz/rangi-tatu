@@ -1,17 +1,35 @@
 // varibles
+
+// colors
 $cOffWhite: #f9f9f9;
 $cWhite: #fff;
-$cGrey: #333;
 $cLightGrey: #dfe3ea;
+$cGrey: #333;
 $cDarkGrey: #474747;
 $cBlack: #000;
+
+// cta colors
 $cCTA: #f9f9f9;
+$cPrimary: #654ECC;
+
+// input and button colors
+$cActionLight: rgba(51, 51, 51, 0.12);
+$cHoverLight: rgba(51, 51, 51, 0.30);
+$cPressLight: rgba(51, 51, 51, 0.80);
+
+$cActionDark: rgba(255, 255, 255, 0.20);
+$cHoverDark: rgba(255, 255, 255, 0.40);
+$cPressDark: rgba(255, 255, 255, 0.80);
+
+
+// sizes
 $sFont: 16px;
 $sFontMedium: 20px;
 $sFontbig: 24px;
 $radius: 4px;
 $radius-lg: 8px;
 $inputborder: 1px;
+
 
 
 $phone: "(max-width: 530px), (-webkit-min-device-pixel-ratio: 2) and (max-width: 530px)";
@@ -48,6 +66,7 @@ $tablet: "(min-width: 531px), (-webkit-min-device-pixel-ratio: 2) and (min-width
 @import './app/reset.scss';
 
 //components
+@import './HexInput/index.scss';
 @import './Intro/index.scss';
 @import './Container/index.scss';
 @import './Picker/index.scss';
@@ -65,7 +84,7 @@ $tablet: "(min-width: 531px), (-webkit-min-device-pixel-ratio: 2) and (min-width
 // core
 body {
     background: $cWhite;
-    font-family: fMedium;
+    font-family: txtMed;
     font-size: $sFont;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -74,7 +93,7 @@ body {
     overflow: hidden;
 
     .fBlack {
-        font-family: fBold;
+        font-family: txtBold;
     }
 
     .restrict {

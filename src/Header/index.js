@@ -6,12 +6,13 @@ import helpers from '../app/helpers'
 
 //components
 import Button from '../Button'
+import HexInput from '../HexInput'
 
 //assets
-import picker from '../app/img/picker.svg'
-import picker2 from '../app/img/picker2.svg'
-import question from '../app/img/question.svg'
-import question2 from '../app/img/question2.svg'
+import gear from '../app/img/gear.svg'
+import gear2 from '../app/img/gear-white.svg'
+import info from '../app/img/info.svg'
+import info2 from '../app/img/info-white.svg'
 
 
 class HeaderComponent extends React.Component {
@@ -24,15 +25,27 @@ class HeaderComponent extends React.Component {
 
         let textColor = isBaseColorDark ? '#ffffff' : '#333333'
 
-        let pickerIcon = isBaseColorDark ? picker2 : picker
-        let questionIcon = isBaseColorDark ? question2 : question
+        let gearIcon = isBaseColorDark ? gear2 : gear
+        let infoIcon = isBaseColorDark ? info2 : info
 
         return (
-            <div className='HeaderComponent' style={{color: textColor, background: baseColor}}>
+            <div className={'HeaderComponent' + (isBaseColorDark ? ' dark' : '')} style={{color: textColor, background: baseColor}}>
                 <div className='header-content'>
                     <h1 className='title'>
                         Rangi Bora
                     </h1>
+                    <div className='header-center'>
+                        <HexInput
+                            hexCode={this.props.hexCode}
+                            hexError={this.props.hexError}
+                            onChange={this.props.baseColorChange}
+                            onKeyPress={(e) => { if (e.key === 'Enter') this.props.createSchemes() }}>
+                            <Button
+                                click={this.props.createSchemes}
+                                passClass='headerButton createButton'
+                                title='Create'/>
+                        </HexInput>
+                    </div>
                     <div className='header-right'>
                         <Button
                             click={this.props.toggleFilters}
@@ -41,11 +54,11 @@ class HeaderComponent extends React.Component {
                         <Button
                             click={this.props.togglePicker}
                             passClass='headerButton'
-                            title={<span><img src={pickerIcon} /> Edit color</span>}/>
+                            title={<img src={gearIcon} />}/>
                         <Button
                             click={this.props.openAbout}
                             passClass='headerButton'
-                            title={<img src={questionIcon} />}/>
+                            title={<img src={infoIcon} />}/>
                     </div>
                 </div>
             </div>

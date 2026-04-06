@@ -2,6 +2,7 @@ import React from 'react'
 
 //components
 import Button from '../Button'
+import HexInput from '../HexInput'
 
 
 class IntroComponent extends React.Component {
@@ -12,21 +13,22 @@ class IntroComponent extends React.Component {
 
                 <div className='title'>Rangi Bora</div>
 
-                <div className='info'>
-                    Instantly create WCAG2 AA compliant color palettes.
-                    Get programatically created color palettes that are WCAG2 AA compliant.
-                </div>
-                <div className='hexInput'>
-                    <div className='label'>Your base color</div>
-                    <input className={this.props.hexError ? 'error' : ''} type='text' placeholder='#FFFFFF' maxLength='7'
-                        value={this.props.hexCode}
-                        onChange={this.props.baseColorChange.bind(this)}/>
-                    {this.props.hexError && <div className='error-message'>Please enter a 3 or 6 digit hex code</div>}
+                <div className='subheader'>
+                    Break out from color normcore
                 </div>
 
-                <Button
-                    title='Create'
-                    click={this.props.createSchemesFromIntro}/>
+                <div className='info'>
+                    Find exciting color palettes for your projects. All colors generated are WCAG AA compliant as well!
+                </div>
+                <HexInput
+                    label='Your base color'
+                    hexCode={this.props.hexCode}
+                    hexError={this.props.hexError}
+                    onChange={this.props.baseColorChange.bind(this)}>
+                    <Button
+                        title='Create'
+                        click={this.props.createSchemesFromIntro}/>
+                </HexInput>
 
             </div>
         )

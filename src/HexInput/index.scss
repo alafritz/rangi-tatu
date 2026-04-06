@@ -1,0 +1,49 @@
+.HexInputComponent {
+
+    .label {
+        font-family: txtBold;
+        margin-bottom: 10px;
+        margin-left: 29px;
+    }
+
+    .input-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .swatch-icon {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        margin-right: -5px;
+    }
+
+    input {
+        width: 160px;
+        height: 40px;
+        background-color: $cActionLight;
+        border: 0;
+        border-radius: $radius;
+        font-size: $sFont;
+        font-family: txtMed;
+        padding-left: 10px;
+        box-sizing: border-box;
+
+        &:focus {
+            outline: 3px solid #53cbed;
+        }
+
+        &.error {
+            border-color: #d32f2f;
+            &:focus { outline-color: #d32f2f; }
+        }
+    }
+
+    .error-message {
+        color: #d32f2f;
+        font-size: $sFont;
+        font-family: txtMed;
+        margin-top: 10px;
+    }
+}

@@ -15,17 +15,41 @@
     
     .title {
         font-size: 24px;
+        flex-shrink: 0;
+    }
+
+    .header-center {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+
+        .HexInputComponent {
+            .label {
+                display: none;
+            }
+
+            .swatch-icon {
+                display: none;
+            }
+
+            input {
+                width: 120px;
+            }
+        }
+
+        .createButton {
+            color: inherit;
+        }
     }
     
     .header-right {
         display: flex;
         align-items: center;
         gap: 10px;
+        flex-shrink: 0;
     }
 
     .headerButton {
-        background: transparent;
-        border-color: currentColor;
         color: inherit;
         padding: 0 12px;
         display: flex;
@@ -33,8 +57,8 @@
         gap: 6px;
 
         img {
-            height: 16px;
-            width: 16px;
+            height: 24px;
+            width: 24px;
             vertical-align: middle;
         }
 
@@ -42,6 +66,21 @@
             display: flex;
             align-items: center;
             gap: 6px;
+        }
+    }
+
+    &.dark {
+        .headerButton, .createButton {
+            background: $cActionDark;
+            &:hover { background: $cHoverDark; }
+            &:active { background: $cPressDark; }
+        }
+
+        .HexInputComponent input {
+            background-color: $cActionDark;
+            color: $cWhite;
+            &:hover { background-color: $cHoverDark; }
+            &:active { background-color: $cPressDark; }
         }
     }
 
@@ -62,6 +101,10 @@
             width: 100%;
             font-size: 22px;
             height: 35px;
+        }
+
+        .header-center {
+            display: none;
         }
 
         .header-right {
