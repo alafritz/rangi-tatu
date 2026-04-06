@@ -41,8 +41,8 @@ class SchemesComponent extends React.Component {
                     </div> :
                     <div className='noSchemesMessage' style={{color: textColor}}>
                         {isFiltered ?
-                            <span>No palettes match the current filters. <a className='resetLink' onClick={this.props.resetFilters}>Reset filters</a></span> :
-                            'Oops! There aren\'t any compliant color groupings. Please choose a new color and try again.'
+                            <span>No palettes match your applied filters.<br></br> <a className='resetLink' onClick={this.props.resetFilters}>Reset filters</a></span> :
+                            'Oops! No compliant color groupings possible. Please enter a new hex code.'
                         }
                     </div>
                 }

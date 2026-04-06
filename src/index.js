@@ -244,6 +244,7 @@ class Renderer extends React.Component {
         this.setState({
             picker: false,
             loading: true,
+            schemes: false,
             hexError: false,
             baseColor: this.state.hexCode,
             showFilters: false,
@@ -260,7 +261,7 @@ class Renderer extends React.Component {
                     schemes: true,
                 })
             )
-        }, 500)
+        }, 800)
     }
 
     baseColorChange(e) {

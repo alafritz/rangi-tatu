@@ -37,13 +37,12 @@
 
     .noSchemesMessage {
         grid-area: schemes;
-        width: 420px;
-        font-size: $sFontbig;
+        width: auto;
+        font-size: $sFont;
         justify-self: center;
         text-align: center;
-        line-height: 40px;
-        word-spacing: .5px;
-        padding-top: 310px;
+        line-height: 32px;
+        padding-top: 60px;
 
         .resetLink {
             font-family: fRegular;
