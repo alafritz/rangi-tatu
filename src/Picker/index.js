@@ -27,8 +27,6 @@ class PickerComponent extends React.Component {
 
     render() {
 
-        let buttonPassClass = 'title' + (this.props.hexCode.length < 4 ? ' restrict' : '')
-
         return (
             <div className='PickerComponent' onClick={this.props.togglePicker}>
 
@@ -36,11 +34,12 @@ class PickerComponent extends React.Component {
 
                     <div className='DropHex'>
                         <div className='title'>Base color (hex code)</div>
-                        <input className='wrapper' type='text' placeholder='#FFFFFF' maxLength='7'
+                        <input className={'wrapper' + (this.props.hexError ? ' error' : '')} type='text' placeholder='#FFFFFF' maxLength='7'
                             value={this.props.hexCode}
                             onKeyPress={this.keypress.bind(this)}
                             onChange={this.props.baseColorChange.bind(this)}/>
                     </div>
+                    {this.props.hexError && <div className='error-message'>Please enter a valid hex code</div>}
 
                     <div className='advancedToggle' onClick={this.toggleAdvanced.bind(this)}>
                         <span className={'chevron' + (this.state.advancedOpen ? ' open' : '')}>&#9662;</span>
@@ -76,7 +75,7 @@ class PickerComponent extends React.Component {
                     <div className='button'>
                         <Button
                             click={this.props.createSchemes}
-                            passClass={buttonPassClass}
+                            passClass='title'
                             title='Create'/>
                     </div>
 

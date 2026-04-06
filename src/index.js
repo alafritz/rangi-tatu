@@ -7,6 +7,7 @@ import contrast from 'get-contrast'
 import './index.scss'
 import constants from '../constants'
 import createRandomNames from './app/data/name.js'
+import helpers from './app/helpers'
 
 //nenets
 import Container from './Container'
@@ -49,6 +50,7 @@ class Renderer extends React.Component {
             ]
             */
             schemesCombinations: [], // color combinations
+            hexError: false,
             showFilters: false,
             filterHue: null,
             filterSaturation: null,
@@ -174,10 +176,15 @@ class Renderer extends React.Component {
     }
 
     createSchemesFromIntro() {
+        if (!helpers.isValidHex(this.state.hexCode)) {
+            this.setState({ hexError: true })
+            return
+        }
         this.setState({
             intro: false,
             picker: false,
             loading: true,
+            hexError: false,
             baseColor: this.state.hexCode,
             showFilters: false,
             filterHue: null,
@@ -229,10 +236,15 @@ class Renderer extends React.Component {
     }
 
     createSchemes() {
+        if (!helpers.isValidHex(this.state.hexCode)) {
+            this.setState({ hexError: true })
+            return
+        }
 
         this.setState({
             picker: false,
             loading: true,
+            hexError: false,
             baseColor: this.state.hexCode,
             showFilters: false,
             filterHue: null,
@@ -253,7 +265,7 @@ class Renderer extends React.Component {
 
     baseColorChange(e) {
         let val = e.target.value.startsWith('#') ? e.target.value : '#' + e.target.value
-        this.setState({hexCode: val})
+        this.setState({hexCode: val, hexError: false})
     }
 
     render() {
@@ -292,6 +304,7 @@ class Renderer extends React.Component {
                 {this.state.intro ?
                     <Intro
                         hexCode={this.state.hexCode}
+                        hexError={this.state.hexError}
                         baseColorChange={this.baseColorChange.bind(this)}
                         createSchemesFromIntro={this.createSchemesFromIntro.bind(this)}/>
                     : null}

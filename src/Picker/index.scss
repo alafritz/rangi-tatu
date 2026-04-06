@@ -34,12 +34,24 @@
             font-family: fRegular;
             padding-left: 10px;
             box-sizing: border-box;
-            
 
             &:focus {
                 outline: 3px solid #53cbed;
             }
+
+            &.error {
+                border-color: #d32f2f;
+                &:focus { outline-color: #d32f2f; }
+            }
         }
+
+    }
+
+    .error-message {
+        color: #d32f2f;
+        font-size: 13px;
+        font-family: fRegular;
+        margin: 6px 10px 0;
     }
 
     .advancedToggle {

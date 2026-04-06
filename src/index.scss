@@ -34,6 +34,16 @@ $tablet: "(min-width: 531px), (-webkit-min-device-pixel-ratio: 2) and (min-width
     src: url('app/fonts/Eczar-Bold.ttf');
 }
 
+@font-face {
+    font-family: txtBold;
+    src: url('app/fonts/AlbertSans-Bold.ttf');
+}
+
+@font-face {
+    font-family: txtMed;
+    src: url('app/fonts/AlbertSans-Medium.ttf');
+}
+
 // main
 @import './app/reset.scss';
 
