@@ -31,17 +31,9 @@ class FilterBarComponent extends React.Component {
             : totalCount
 
         return (
-            <div className='FilterBarComponent' style={{color: textColor, background: baseColor}}>
+            <div className={'FilterBarComponent' + (this.isBaseColorDark() ? ' dark' : '')} style={{ color: textColor, background: baseColor }}>
                 <div className='filterRow'>
-                    <Selector
-                        passClass='filterSelector'
-                        title='Hue'
-                        options={[
-                            { value: 'warm', label: 'Warm' },
-                            { value: 'cold', label: 'Cold' }
-                        ]}
-                        active={this.props.filterHue}
-                        click={this.props.changeFilter.bind(this, 'Hue')}/>
+
                     <Selector
                         passClass='filterSelector'
                         title='Saturation'
@@ -51,7 +43,18 @@ class FilterBarComponent extends React.Component {
                             { value: 'high', label: 'High' }
                         ]}
                         active={this.props.filterSaturation}
-                        click={this.props.changeFilter.bind(this, 'Saturation')}/>
+                        click={this.props.changeFilter.bind(this, 'Saturation')} />
+
+                    <Selector
+                        passClass='filterSelector'
+                        title='Hue'
+                        options={[
+                            { value: 'warm', label: 'Warm' },
+                            { value: 'cold', label: 'Cold' }
+                        ]}
+                        active={this.props.filterHue}
+                        click={this.props.changeFilter.bind(this, 'Hue')} />
+
                     <Selector
                         passClass='filterSelector'
                         title='Lightness'
@@ -61,13 +64,13 @@ class FilterBarComponent extends React.Component {
                             { value: 'light', label: 'Light' }
                         ]}
                         active={this.props.filterLightness}
-                        click={this.props.changeFilter.bind(this, 'Lightness')}/>
+                        click={this.props.changeFilter.bind(this, 'Lightness')} />
                 </div>
                 <span className='filterCount'>
-                    Showing {filteredCount} of {totalCount}
-                    {filtered ?
+                    {filteredCount} of {totalCount}
+                    {/* {filtered ?
                         <a className='resetLink' onClick={this.props.resetFilters}> Reset</a>
-                        : null}
+                        : null} */}
                 </span>
             </div>
         )

@@ -1,8 +1,9 @@
 .FilterBarComponent {
-    padding: 0 40px 20px;
+    padding: 20px 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: inherit;
 
     .filterRow {
         display: flex;
@@ -13,7 +14,6 @@
     }
 
     .filterTitle {
-        font-family: fBold;
         font-size: $sFont;
         white-space: nowrap;
         margin-right: 4px;
@@ -23,9 +23,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 4px;
+        gap: 8px;
 
         .title {
+            font-family: txtMed;
             grid-area: unset;
             white-space: nowrap;
             margin: 0;
@@ -34,16 +35,30 @@
         .wrapper {
             grid-area: unset;
             display: flex;
+            gap: 3px;
 
             button {
                 width: 88px;
-                padding: 0 12px;
+                border: 0;
+
+                &:first-child {
+                    border-radius: 20px $radius $radius 20px;
+                    padding-left: 10px;
+                }
+                &:not(:first-child):not(:last-child) {
+                    border-radius: $radius;
+                }
+
+                &:last-child {
+                    border-radius: $radius 20px 20px $radius;
+                    padding-right: 10px;
+                }
             }
         }
     }
 
     .filterCount {
-        font-family: fRegular;
+        font-family: txtMed;
         font-size: 14px;
         opacity: 0.8;
         white-space: nowrap;
@@ -51,13 +66,23 @@
     }
 
 
+    &.dark {
+        .filterSelector .wrapper button {
+            background: $cActionDark;
+            color: inherit;
+            &:hover:not(.active) { background: $cHoverDark; }
+            &:active:not(.active) { background: $cPressDark; }
+            &.active { color: $cGrey; background: $cPressDark; }
+        }
+    }
+
     @media #{$phone} {
         padding: 10px 10px;
         align-items: stretch;
 
         .filterRow {
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
         }
 
         .filterSelector {
@@ -71,6 +96,11 @@
                 }
             }
         }
+        .filterCount {
+            text-align: center;
+        }
     }
 
-}// FilterBarComponent
+}
+
+// FilterBarComponent

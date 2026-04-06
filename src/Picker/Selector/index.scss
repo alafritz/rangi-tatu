@@ -62,74 +62,42 @@
 
         button {
             overflow: hidden;
-            background: #fefefe;
-            border: $inputborder solid $cGrey;
+            background-color: $cActionLight;
+            border: 0;
             font-family: fRegular;
             font-size: $sFont;
             text-align: center;
             height: 40px;
-            margin-left: -1px;
             cursor: pointer;
 
             &:first-child {
-                border-radius: $radius 0 0 $radius;
+                border-radius: 20px $radius $radius 20px;
+                padding-left: 10px;
+            }
+            &:not(:first-child):not(:last-child) {
+                    border-radius: $radius;
             }
             &:last-child {
-                border-radius: 0 $radius $radius 0;
+                border-radius: $radius 20px 20px $radius;
+                padding-right: 10px;
             }
 
             &.active {
-                background: $cGrey;
-                font-family: fBold;
+                background: $cPressLight;
+                font-family: fRegular;
                 color: $cWhite;
             }
 
             &:hover:not(.active) {
                 
                 &:first-child {
-                    background: $cWhite;
-                    animation: 2500ms boxBottom1 infinite;
-                     @keyframes boxBottom1 {
-                        0% { box-shadow: -5px 5px 0px 0px rgba(39, 119, 197, 1); } // #2777c6
-                        20% { box-shadow: -5px 5px 0px 0px rgba(34, 184, 200, 1); } // #22b8c8
-                        30% { box-shadow: -5px 5px 0px 0px rgba(34, 213, 185, 1); } //#22d5b9
-                        40% { box-shadow: -5px 5px 0px 0px rgba(71, 213, 48, 1); } //#47d530
-                        50% { box-shadow: -5px 5px 0px 0px rgba(206, 200, 33, 1); } //#cec821
-                        60% { box-shadow: -5px 5px 0px 0px rgba(211, 133, 31, 1); } // #d3851f
-                        70% { box-shadow: -5px 5px 0px 0px rgba(213, 53, 31, 1); } //#d5351f
-                        80% { box-shadow: -5px 5px 0px 0px rgba(199, 33, 212, 1); } //#c721d4
-                        100% { box-shadow: -5px 5px 0px 0px rgba(132, 71, 213, 1);} //#8447d5
-                    }
+                    background: $cHoverLight;
                 }
                 &:not(:first-child):not(:last-child) {
-                    background: $cWhite;
-                    animation: 2500ms boxBottom2 infinite;
-                     @keyframes boxBottom2 {
-                        0% { box-shadow: 0px 5px 0px 0px rgba(39, 119, 197, 1); } // #2777c6
-                        20% { box-shadow: 0px 5px 0px 0px rgba(34, 184, 200, 1); } // #22b8c8
-                        30% { box-shadow: 0px 5px 0px 0px rgba(34, 213, 185, 1); } //#22d5b9
-                        40% { box-shadow: 0px 5px 0px 0px rgba(71, 213, 48, 1); } //#47d530
-                        50% { box-shadow: 0px 5px 0px 0px rgba(206, 200, 33, 1); } //#cec821
-                        60% { box-shadow: 0px 5px 0px 0px rgba(211, 133, 31, 1); } // #d3851f
-                        70% { box-shadow: 0px 5px 0px 0px rgba(213, 53, 31, 1); } //#d5351f
-                        80% { box-shadow: 0px 5px 0px 0px rgba(199, 33, 212, 1); } //#c721d4
-                        100% { box-shadow: 0px 5px 0px 0px rgba(132, 71, 213, 1);} //#8447d5
-                    }
+                    background: $cHoverLight;
                 }
                 &:last-child {
-                    background: $cWhite;
-                    animation: 2500ms boxBottom3 infinite;
-                     @keyframes boxBottom3 {
-                        0% { box-shadow: 5px 5px 0px 0px rgba(39, 119, 197, 1); } // #2777c6
-                        20% { box-shadow: 5px 5px 0px 0px rgba(34, 184, 200, 1); } // #22b8c8
-                        30% { box-shadow: 5px 5px 0px 0px rgba(34, 213, 185, 1); } //#22d5b9
-                        40% { box-shadow: 5px 5px 0px 0px rgba(71, 213, 48, 1); } //#47d530
-                        50% { box-shadow: 5px 5px 0px 0px rgba(206, 200, 33, 1); } //#cec821
-                        60% { box-shadow: 5px 5px 0px 0px rgba(211, 133, 31, 1); } // #d3851f
-                        70% { box-shadow: 5px 5px 0px 0px rgba(213, 53, 31, 1); } //#d5351f
-                        80% { box-shadow: 5px 5px 0px 0px rgba(199, 33, 212, 1); } //#c721d4
-                        100% { box-shadow: 5px 5px 0px 0px rgba(132, 71, 213, 1);} //#8447d5
-                    }
+                    background: $cHoverLight;
                 }
             }
 
