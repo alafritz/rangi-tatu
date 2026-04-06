@@ -13,6 +13,8 @@ import gear from '../app/img/gear.svg'
 import gear2 from '../app/img/gear-white.svg'
 import info from '../app/img/info.svg'
 import info2 from '../app/img/info-white.svg'
+import filter from '../app/img/filter.svg'
+import filter2 from '../app/img/filter-white.svg'
 
 
 class HeaderComponent extends React.Component {
@@ -27,6 +29,7 @@ class HeaderComponent extends React.Component {
 
         let gearIcon = isBaseColorDark ? gear2 : gear
         let infoIcon = isBaseColorDark ? info2 : info
+        let filterIcon = isBaseColorDark ? filter2 : filter
 
         return (
             <div className={'HeaderComponent' + (isBaseColorDark ? ' dark' : '')} style={{color: textColor, background: baseColor}}>
@@ -34,7 +37,7 @@ class HeaderComponent extends React.Component {
                     <h1 className='title'>
                         Rangi Bora
                     </h1>
-                    <div className='header-center'>
+                    <div className='header-hex'>
                         <HexInput
                             hexCode={this.props.hexCode}
                             hexError={this.props.hexError}
@@ -49,8 +52,8 @@ class HeaderComponent extends React.Component {
                     <div className='header-right'>
                         <Button
                             click={this.props.toggleFilters}
-                            passClass='headerButton'
-                            title='Filters'/>
+                            passClass='headerButton filterButton'
+                            title={<span><span className='filter-text'>Filters</span><img className='filter-icon' src={filterIcon} /></span>}/>
                         <Button
                             click={this.props.togglePicker}
                             passClass='headerButton'
