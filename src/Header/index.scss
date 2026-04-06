@@ -51,9 +51,22 @@
 
     @media #{$phone} {
         grid-template-columns: 10px 1fr 10px;
+        height: auto;
+        padding: 15px 0;
+
+        .header-content {
+            flex-wrap: wrap;
+        }
 
         .title {
+            width: 100%;
             font-size: 22px;
+            height: 35px;
+        }
+
+        .header-right {
+            width: 100%;
+            gap: 15px;
         }
     }
 

@@ -32,7 +32,7 @@ class SchemesComponent extends React.Component {
 
         return(
 
-            <div className='SchemesComponent' style={{background: baseColor}}>
+            <div className='SchemesComponent' style={{background: baseColor}} onScroll={this.props.onScroll}>
                 { filteredSchemes.length >= 1 ?
                     <div className='schemes'>
                         {filteredSchemes.map((scheme, i) => (

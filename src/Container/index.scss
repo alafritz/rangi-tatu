@@ -5,13 +5,23 @@
     background-color: $cOffWhite;
     overflow: hidden;
 
+    .headerWrapper {
+        @media #{$phone} {
+            transition: margin-top 300ms ease;
+
+            &.hidden {
+                margin-top: -100px;
+            }
+        }
+    }
+
     .filterBarSlider {
         max-height: 0;
         overflow: hidden;
         transition: max-height 300ms ease-out;
 
         &.open {
-            max-height: 200px;
+            max-height: 300px;
         }
     }
 }

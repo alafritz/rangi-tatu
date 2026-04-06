@@ -35,13 +35,13 @@ class HeaderComponent extends React.Component {
                     </h1>
                     <div className='header-right'>
                         <Button
-                            click={this.props.togglePicker}
-                            passClass='headerButton'
-                            title={<span><img src={pickerIcon} /> Edit color</span>}/>
-                        <Button
                             click={this.props.toggleFilters}
                             passClass='headerButton'
                             title='Filters'/>
+                        <Button
+                            click={this.props.togglePicker}
+                            passClass='headerButton'
+                            title={<span><img src={pickerIcon} /> Edit color</span>}/>
                         <Button
                             click={this.props.openAbout}
                             passClass='headerButton'

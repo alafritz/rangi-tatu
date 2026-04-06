@@ -53,6 +53,24 @@
 
     @media #{$phone} {
         padding: 10px 10px;
+        align-items: stretch;
+
+        .filterRow {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .filterSelector {
+            width: 100%;
+            align-items: stretch;
+
+            .wrapper {
+                button {
+                    flex: 1;
+                    width: auto;
+                }
+            }
+        }
     }
 
 }// FilterBarComponent
