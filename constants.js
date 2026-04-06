@@ -21,9 +21,4 @@ export default {
             { value: '20°', label: 'Drastic' },
         ],
     }
-    // SelectorOptions: {
-    //     hueOptions: ['10°', '15°', '20°'],
-    //     saturationOptions: ['10%', '15%', '20%'],
-    //     shadeOptions: ['10%', '15%', '20%']
-    // }
 }

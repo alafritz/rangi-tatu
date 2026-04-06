@@ -9,12 +9,10 @@ import constants from '../constants'
 import createRandomNames from './app/data/name.js'
 import helpers from './app/helpers'
 
-//nenets
 import Container from './Container'
 import SettingsModal from './SettingsModal'
 import Intro from './Intro'
 import About from './About'
-import Information from './Information'
 
 class Renderer extends React.Component {
 
@@ -28,40 +26,18 @@ class Renderer extends React.Component {
 
             about: false, // application/team information that overlays whole app
 
-            information: false,
-
             hexCode: '',
-            baseColor: '', // will always start with #
-            standard: 'WCAG AA',
+            baseColor: '',
             hue: '15°',
             saturation: '15%',
             shade: '15%',
-            /*
-            [ //newSchemesCombinations
-              { //
-                colors: [
-                  [235,50,20], // color1 [hue, saturation, lightness]
-                  [230,30,40], // color2
-                  [230,30,40],
-                  [230,30,40]
-                ],
-                name: 'Mud Newt' // randomly generated name
-              }
-            ]
-            */
-            schemesCombinations: [], // color combinations
+            schemesCombinations: [],
             hexError: false,
             showFilters: false,
             filterHue: null,
             filterSaturation: null,
             filterLightness: null
         }
-    }
-
-    // lifecycle
-    componentDidMount(){
-        // this.closeIntro()
-        // this.createSchemes()
     }
 
     // accepts: base degree and complimantary angle degree
@@ -81,20 +57,18 @@ class Renderer extends React.Component {
     }
 
     isSchemeWcagCompliant(colorScheme) {
-        let wcagStandard = this.state.standard.split(' ')[1] // ['WCAG', 'AA'] or ['WCAG', 'AAA'] -> 'AA' 0r 'AAA'
         let passWcag = true
 
         colorScheme.colors.forEach(color => {
             let hslBackground = `hsl(${color[0]}, ${color[1]}%, ${color[2]}%)`
-            let colorContrast = contrast.score(this.state.baseColor, hslBackground) // get-contrast library checks for AAA & AA contrast
+            let colorContrast = contrast.score(this.state.baseColor, hslBackground)
 
             if(colorContrast === 'F') passWcag = false
-            if(wcagStandard === 'AAA' && colorContrast === 'AA') passWcag = false
 
-        })// stepping through colors in colorScheme
+        })
 
         return passWcag
-    } // checks if scheme colors are wcag compliant
+    }
 
 
     generateCombinations(callback) {
@@ -198,18 +172,6 @@ class Renderer extends React.Component {
         }, 500)
     }
 
-    openInformation(whichPage) {
-        this.setState({information: whichPage})
-    }
-
-    closeInformation() {
-        this.setState({information: false})
-    }
-
-    changeStandard(val) {
-        this.setState({standard: val})
-    }
-
     changeHue(val) {
         this.setState({hue: val})
     }
@@ -285,23 +247,12 @@ class Renderer extends React.Component {
                 {this.state.picker ?
                     <SettingsModal {...this.state}
                         togglePicker={this.togglePicker.bind(this)}
-                        changeStandard={this.changeStandard.bind(this)}
                         changeHue={this.changeHue.bind(this)}
                         changeSaturation={this.changeSaturation.bind(this)}
                         changeShade={this.changeShade.bind(this)}
                         createSchemes={this.createSchemes.bind(this)}
                         baseColorChange={this.baseColorChange.bind(this)}
-                        openInformation={this.openInformation.bind(this)}
                     />
-                    : null}
-
-                {this.state.information ?
-                    <Information {...this.state}
-                        onBackClick={this.closeInformation.bind(this)}
-                        changeHue={this.changeHue.bind(this)}
-                        changeSaturation={this.changeSaturation.bind(this)}
-                        changeShade={this.changeShade.bind(this)}/>
-
                     : null}
 
                 {this.state.intro ?
