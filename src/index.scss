@@ -37,30 +37,10 @@ $tablet: "(min-width: 531px), (-webkit-min-device-pixel-ratio: 2) and (min-width
 
 
 // fonts
-@font-face {
-    font-family: fMedium;
-    src: url('app/fonts/Eczar-Medium.ttf');
-}
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@500;700&family=Eczar:wght@400;500;700&display=swap');
 
-@font-face {
-    font-family: fRegular;
-    src: url('app/fonts/Eczar-Regular.ttf');
-}
-
-@font-face {
-    font-family: fBold;
-    src: url('app/fonts/Eczar-Bold.ttf');
-}
-
-@font-face {
-    font-family: txtBold;
-    src: url('app/fonts/AlbertSans-Bold.ttf');
-}
-
-@font-face {
-    font-family: txtMed;
-    src: url('app/fonts/AlbertSans-Medium.ttf');
-}
+$fEczar: 'Eczar', serif;
+$fAlbert: 'Albert Sans', sans-serif;
 
 // main
 @import './app/reset.scss';
@@ -83,7 +63,8 @@ $tablet: "(min-width: 531px), (-webkit-min-device-pixel-ratio: 2) and (min-width
 // core
 body {
     background: $cWhite;
-    font-family: txtMed;
+    font-family: $fAlbert;
+    font-weight: 500;
     font-size: $sFont;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -92,7 +73,8 @@ body {
     overflow: hidden;
 
     .fBlack {
-        font-family: txtBold;
+        font-family: $fAlbert;
+        font-weight: 700;
     }
 
     .restrict {

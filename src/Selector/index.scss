@@ -5,11 +5,13 @@
     gap: 8px;
 
     .label {
-        font-family: txtBold;
+        font-family: $fAlbert;
+        font-weight: 700;
     }
 
     .subheader {
-        font-family: txtMed;
+        font-family: $fAlbert;
+        font-weight: 500;
         color: $cDarkGrey;
         font-size: $sFont;
     }
@@ -24,7 +26,8 @@
             overflow: hidden;
             background-color: $cActionLight;
             border: 0;
-            font-family: fRegular;
+            font-family: $fEczar;
+            font-weight: 400;
             font-size: $sFont;
             text-align: center;
             height: 40px;

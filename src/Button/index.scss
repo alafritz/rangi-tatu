@@ -5,7 +5,8 @@
     background: $cActionLight;
     font-size: $sFont;
     letter-spacing: 0.3px;
-    font-family: fRegular;
+    font-family: $fEczar;
+    font-weight: 400;
     outline: none;
 
     &:hover {

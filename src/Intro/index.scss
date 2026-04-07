@@ -20,7 +20,8 @@
         grid-area: title;
         align-self: end;
         justify-self: left;
-        font-family: fBold;
+        font-family: $fEczar;
+        font-weight: 700;
         font-size: 32px;
         line-height: 48px;
     }
@@ -28,7 +29,8 @@
     .subheader {
         grid-area: subheader;
         font-size: $sFont;
-        font-family: txtBold;
+        font-family: $fAlbert;
+        font-weight: 700;
         text-align: left;
         align-self: center;
         line-height: 24px;
@@ -37,7 +39,8 @@
     .info {
         grid-area: info;
         font-size: $sFont;
-        font-family: txtMed;
+        font-family: $fAlbert;
+        font-weight: 500;
         text-align: left;
         align-self: center;
         line-height: 24px;
