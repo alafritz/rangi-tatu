@@ -42,7 +42,7 @@ module.exports = {
         ]
     },
     devServer: {
-        static: './',
+        static: './dist',
         hot: true
     },
     plugins: [
